@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Memory Card Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="intro-page" id="intro-page">
+        <div class="intro-content">
+            <h1 class="intro-title"><span>🎮</span> Memory Card Game <span>🎮</span></h1>
+            <div class="intro-description">
+                <h2>Test Your Memory!</h2>
+                <p>Match pairs of cards by remembering their positions.</p>
+                <div class="game-rules">
+                    <h3>How to Play:</h3>
+                    <ul>
+                        <li>👆 Click cards to flip them</li>
+                        <li>🧠 Remember card positions</li>
+                        <li>✨ Match all pairs to win</li>
+                        <li>⏱️ Complete as fast as possible</li>
+                        <li>🏆 Beat your best scores</li>
+                    </ul>
+                </div>
+                <div class="features">
+                    <h3>Game Features:</h3>
+                    <ul>
+                        <li>🎯 3 Difficulty Levels</li>
+                        <li>🎨 5 Fun Themes</li>
+                        <li>📊 Statistics Tracking</li>
+                        <li>🔊 Sound Effects</li>
+                        <li>📱 Mobile Friendly</li>
+                    </ul>
+                </div>
+            </div>
+            <button id="start-game" class="start-button">Start Game 🚀</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Memory Card Game</h1>
+            <div class="game-info">
+                <div class="score">
+                    <span>Moves: <span id="moves">0</span></span>
+                    <span>Time: <span id="timer">00:00</span></span>
+                </div>
+                <div class="best-score">
+                    Best: <span id="best-score">--</span>
+                </div>
+            </div>
+            <div class="stats-toggle">
+                <button id="stats-btn">📊 Stats</button>
+                <button id="mute-btn">🔊 Sound</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="game-controls">
+                <button id="new-game">New Game 🔄</button>
+                <select id="difficulty">
+                    <option value="easy">Easy (4x3)</option>
+                    <option value="medium">Medium (4x4)</option>
+                    <option value="hard">Hard (6x4)</option>
+                </select>
+                <select id="theme">
+                    <option value="fruits">🍎 Fruits</option>
+                    <option value="animals">🐶 Animals</option>
+                    <option value="sports">⚽ Sports</option>
+                    <option value="transport">🚗 Transportation</option>
+                    <option value="food">🍕 Food</option>
+                </select>
+            </div>
+
+            <div class="game-board" id="game-board">
+            </div>
+
+            <div class="game-message" id="game-message">
+                <h2>🎉 Congratulations! 🎉</h2>
+                <p>You found all matches in <span id="final-moves">0</span> moves!</p>
+                <p>Time: <span id="final-time">00:00</span></p>
+                <button id="play-again">Play Again 🔄</button>
+            </div>
+
+            <div class="stats-modal" id="stats-modal">
+                <div class="stats-content">
+                    <h2>📊 Game Statistics</h2>
+                    <button class="close-stats" id="close-stats">✖</button>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <h3>Total Games</h3>
+                            <span id="total-games">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <h3>Games Won</h3>
+                            <span id="games-won">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <h3>Win Rate</h3>
+                            <span id="win-rate">0%</span>
+                        </div>
+                        <div class="stat-item">
+                            <h3>Avg Moves</h3>
+                            <span id="avg-moves">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <h3>Best Time</h3>
+                            <span id="best-time-ever">--:--</span>
+                        </div>
+                        <div class="stat-item">
+                            <h3>Current Streak</h3>
+                            <span id="current-streak">0</span>
+                        </div>
+                    </div>
+                    
+                    <button class="reset-stats" id="reset-stats">🔄 Reset Stats</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
