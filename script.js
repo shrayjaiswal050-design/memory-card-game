@@ -206,7 +206,7 @@ class MemoryGame {
         if (muteBtn) {
             muteBtn.addEventListener('click', () => {
                 this.isMuted = !this.isMuted;
-                muteBtn.textContent = this.isMuted ? '🔇 Sound' : '🔊 Sound';
+                muteBtn.textContent = this.isMuted ? 'Sound Off' : 'Sound On';
             });
         }
 
@@ -220,7 +220,7 @@ class MemoryGame {
     
     createBoard() {
         const gameBoard = document.getElementById('game-board');
-        gameBoard.innerHTML = '';
+        gameBoard.replaceChildren();
         gameBoard.className = `game-board ${this.difficulty}`;
         
         const emojiSet = this.themes[this.theme][this.difficulty];
@@ -239,10 +239,15 @@ class MemoryGame {
         card.dataset.emoji = emoji;
         card.dataset.index = index;
         
-        card.innerHTML = `
-            <div class="card-face card-front">?</div>
-            <div class="card-face card-back">${emoji}</div>
-        `;
+        const front = document.createElement('div');
+        front.className = 'card-face card-front';
+        front.textContent = '?';
+
+        const back = document.createElement('div');
+        back.className = 'card-face card-back';
+        back.textContent = emoji;
+
+        card.append(front, back);
         
         card.addEventListener('click', () => this.flipCard(card));
         return card;
@@ -389,7 +394,7 @@ class MemoryGame {
                 confetti.style.left = Math.random() * 100 + '%';
                 confetti.style.top = '-50px';
                 confetti.style.fontSize = randomFontSize + 'px';
-                confetti.style.zIndex = '9999';
+                confetti.style.zIndex = 'var(--z-toast)';
                 confetti.style.pointerEvents = 'none';
                 confetti.style.animation = `fall ${randomFallTime}s linear forwards`;
                 confetti.style.transform = `rotate(${randomRotation}deg)`;
@@ -505,10 +510,8 @@ class MemoryGame {
             stats.currentStreak = 0;
         }
         
-        // Update average moves
         stats.avgMoves = ((stats.avgMoves * (stats.totalGames - 1)) + moves) / stats.totalGames;
         
-        // Update best time ever
         if (stats.bestTimeEver === '--:--' || time < this.timeToSeconds(stats.bestTimeEver)) {
             stats.bestTimeEver = this.secondsToTime(time);
         }
